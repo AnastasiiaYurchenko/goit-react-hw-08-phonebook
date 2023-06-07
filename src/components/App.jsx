@@ -7,6 +7,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchContactas } from 'redux/operations';
 import { selectContacts, selectError, selectIsLoading } from 'redux/selectors';
+import { Route, Routes } from 'react-router-dom';
+import Home from 'pages/Home';
+import RegisterPage from 'pages/RegisterPage';
+import LoginPage from 'pages/LoginPage';
+import ContactsPage from 'pages/ContactsPage';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -20,16 +25,24 @@ export const App = () => {
   }, [dispatch]);
 
   return (
-    <Layout>
-      <h1>Phonebook</h1>
-      <ContactsForm />
-      <h2>Contacts</h2>
-      <Filter />
-      {isLoading && !error && <h1>Loading Contacts......</h1>}
-      {error && <h1>{error}</h1>}
-      {contacts.length > 0 && <ContactsList />}
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/contacts" element={<ContactsPage />} />
+      </Route>
+    </Routes>
+    // <Layout>
+    //   <h1>Phonebook</h1>
+    //   <ContactsForm />
+    //   <h2>Contacts</h2>
+    //   <Filter />
+    //   {isLoading && !error && <h1>Loading Contacts......</h1>}
+    //   {error && <h1>{error}</h1>}
+    //   {contacts.length > 0 && <ContactsList />}
 
-      <GlobalStyle />
-    </Layout>
+    //   <GlobalStyle />
+    // </Layout>
   );
 };
