@@ -1,12 +1,12 @@
 import { Layout } from './Layout/Layout';
-import { GlobalStyle } from './GlobalStyle';
-import { ContactsForm } from './ContactsForm/ContactsForm';
-import { ContactsList } from './ContactsList/ContactsList';
-import { Filter } from 'components/Filter/Filter';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { fetchContactas } from 'redux/operations';
-import { selectContacts, selectError, selectIsLoading } from 'redux/selectors';
+// import { GlobalStyle } from './GlobalStyle';
+// import { ContactsForm } from './ContactsForm/ContactsForm';
+// import { ContactsList } from './ContactsList/ContactsList';
+// import { Filter } from 'components/Filter/Filter';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { useEffect } from 'react';
+// import { fetchContactas } from 'redux/operations';
+// import { selectContacts, selectError, selectIsLoading } from 'redux/selectors';
 import { Route, Routes } from 'react-router-dom';
 import Home from 'pages/Home';
 import RegisterPage from 'pages/RegisterPage';
@@ -14,15 +14,15 @@ import LoginPage from 'pages/LoginPage';
 import ContactsPage from 'pages/ContactsPage';
 
 export const App = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const isLoading = useSelector(selectIsLoading);
-  const contacts = useSelector(selectContacts);
-  const error = useSelector(selectError);
+  // const isLoading = useSelector(selectIsLoading);
+  // const contacts = useSelector(selectContacts);
+  // const error = useSelector(selectError);
 
-  useEffect(() => {
-    dispatch(fetchContactas());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchContactas());
+  // }, [dispatch]);
 
   return (
     <Routes>
