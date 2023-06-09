@@ -4,8 +4,12 @@ import { Filter } from 'components/Filter/Filter';
 import { GlobalStyle } from 'components/GlobalStyle';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchContactas } from 'redux/operations';
-import { selectContacts, selectError, selectIsLoading } from 'redux/selectors';
+import { fetchContactas } from 'redux/contacts/operations';
+import {
+  selectContacts,
+  selectError,
+  selectIsLoading,
+} from 'redux/contacts/selectors';
 
 const ContactsPage = () => {
   const dispatch = useDispatch();

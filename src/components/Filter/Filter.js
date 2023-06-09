@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { FieldFind, LabelFind } from './Filter.styled';
 import { setFilter } from 'redux/filterSlice';
-import { selectFilter } from 'redux/selectors';
+import { selectFilter } from 'redux/contacts/selectors';
 
 export const Filter = () => {
   const dispatch = useDispatch();
