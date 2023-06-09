@@ -5,6 +5,8 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
+// GET @ /contacts
+
 export const fetchContactas = createAsyncThunk(
   'contacts/fetchAll',
   // Використовуємо символ підкреслення як ім'я першого параметра,
