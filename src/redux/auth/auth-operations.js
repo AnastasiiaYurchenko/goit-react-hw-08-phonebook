@@ -20,3 +20,20 @@ export const register = createAsyncThunk(
     }
   }
 );
+
+/*
+ * POST @ /users/login
+ * body: { email, password }
+ */
+
+export const logIn = createAsyncThunk(
+  'auth/logIn',
+  async (credentials, thunkAPI) => {
+    try {
+      const { data } = await axios.post('/users/login', credentials);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
