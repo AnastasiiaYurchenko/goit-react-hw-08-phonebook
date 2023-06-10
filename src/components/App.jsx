@@ -12,9 +12,12 @@ import Home from 'pages/Home';
 import RegisterPage from 'pages/RegisterPage';
 import LoginPage from 'pages/LoginPage';
 import ContactsPage from 'pages/ContactsPage';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchCurrentUser } from 'redux/auth/auth-operations';
 
 export const App = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   // const isLoading = useSelector(selectIsLoading);
   // const contacts = useSelector(selectContacts);
@@ -23,6 +26,10 @@ export const App = () => {
   // useEffect(() => {
   //   dispatch(fetchContactas());
   // }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchCurrentUser());
+  }, [dispatch]);
 
   return (
     <Routes>

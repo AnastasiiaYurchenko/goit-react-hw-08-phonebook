@@ -40,6 +40,7 @@ export const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axios.post('/users/signup', credentials);
+
       setAuthHeader(data.token);
       // token.set(data.token);
       return data;
@@ -60,6 +61,7 @@ export const logIn = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axios.post('/users/login', credentials);
+
       setAuthHeader(data.token);
       // token.set(data.token);
       return data;
@@ -84,3 +86,34 @@ export const logOut = createAsyncThunk('auth/logOut', async (_, thunkAPI) => {
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+
+/*
+ * GET @ /users/current
+ * headers: Authorization: Bearer token
+ * 1. забираем токен из стейта через getState()
+ * 2. если  токена нет, выходим не выполняя никаких операций
+ * 3. если  токен есть, добавляем токен в HTTP заголовок и выполняем операцию
+ */
+
+export const fetchCurrentUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    console.log(state);
+    const persistedToken = state.auth.token;
+    console.log(persistedToken);
+
+    if (persistedToken === null) {
+      // console.log('Токена нет, уходим из fetchCurrentUser ')
+      return thunkAPI.rejectWithValue('Unable to fetch user');
+    }
+
+    setAuthHeader(persistedToken);
+    try {
+      const { data } = await axios.get('/users/current');
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
