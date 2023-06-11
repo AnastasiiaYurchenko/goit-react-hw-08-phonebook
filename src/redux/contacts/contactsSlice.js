@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchContactas, addContact, deleteContact } from './operations';
+import { logOut } from 'redux/auth/auth-operations';
 
 const contactsInitialState = {
   items: [],
@@ -52,6 +53,12 @@ export const contactsSlice = createSlice({
         contact => contact.id === action.payload.id
       );
       state.items.splice(index, 1);
+    },
+    // при логауте чистим стейт контактов, чтобы новый пользователь не увиел на секунду данные предыдущего пользователя
+    [logOut.fulfilled](state) {
+      state.items = [];
+      state.isLoading = false;
+      state.error = null;
     },
   },
 });

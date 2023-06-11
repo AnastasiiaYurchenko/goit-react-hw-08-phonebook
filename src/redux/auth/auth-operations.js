@@ -99,9 +99,9 @@ export const fetchCurrentUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
-    console.log(state);
+    // console.log(state);
     const persistedToken = state.auth.token;
-    console.log(persistedToken);
+    // console.log(persistedToken);
 
     if (persistedToken === null) {
       // console.log('Токена нет, уходим из fetchCurrentUser ')
