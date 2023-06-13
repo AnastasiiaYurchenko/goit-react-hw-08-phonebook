@@ -1,7 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+// import { Form } from 'react-router-dom';
 import { logIn } from 'redux/auth/auth-operations';
-// import { logIn } from 'redux/auth/operations';
+import { Button, Form, Label } from './LoginForm.styled';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -19,17 +20,17 @@ const LoginForm = () => {
     form.reset();
   };
   return (
-    <form onSubmit={handleSubmit} autoComplete="off">
-      <label>
+    <Form onSubmit={handleSubmit} autoComplete="off">
+      <Label>
         Email
         <input type="email" name="email" />
-      </label>
-      <label>
+      </Label>
+      <Label>
         Password
         <input type="password" name="password" />
-      </label>
-      <button type="submit">Log In</button>
-    </form>
+      </Label>
+      <Button type="submit">Log In</Button>
+    </Form>
   );
 };
 

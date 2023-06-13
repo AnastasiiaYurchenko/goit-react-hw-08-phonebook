@@ -23,7 +23,6 @@ const ContactsPage = () => {
   }, [dispatch]);
   return (
     <div>
-      <p>ContactsPage</p>
       <h1>Phonebook</h1>
       <ContactsForm />
       <h2>Contacts</h2>
